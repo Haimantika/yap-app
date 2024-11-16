@@ -9,7 +9,7 @@ import html2canvas from 'html2canvas'
 export default function ShareableTextCard({yapper_text}: {yapper_text:string}) {
   const cardRef = React.useRef(null);
   const content = {
-    title: "Happy yapping! Slay 💅",
+    title: "Time to slay besties! 💅",
     text: yapper_text,
   }
 
