@@ -5,10 +5,10 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button"
 import { Download, Twitter, Facebook, Linkedin } from 'lucide-react'
 
-export default function ShareableTextCard() {
+export default function ShareableTextCard({yapper_text}: {yapper_text:string}) {
   const content = {
     title: "Happy yapping! Slay 💅",
-    text: "This is where the generated text will be",
+    text: yapper_text,
   }
 
   const downloadContent = () => {
