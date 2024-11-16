@@ -32,9 +32,9 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+    <div className="flex items-center justify-center">
       <div className="w-full max-w-md">
-        <div className="grid w-full gap-2">
+        <div className="grid w-full gap-4">
           <Textarea
             onChange={handleInputChange}
             placeholder="Type your millennial/boomer lingo here."
@@ -45,8 +45,9 @@ export default function HomePage() {
           </Button>
 
           {error && <p className="text-red-500">{error}</p>} 
-
+          <div className="pt-12">
           <ShareableTextCard yapper_text={trueYapperText} />
+          </div>
         </div>
       </div>
     </div>
