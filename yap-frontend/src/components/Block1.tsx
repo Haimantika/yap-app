@@ -5,7 +5,7 @@ export default function Block1() {
           style={{
             fontFamily: "Glirock, sans-serif",
             fontSize: "54.32px",
-            fontWeight: 200,
+            fontWeight: 600,
           }}
         >
           Become a pro yapper! ✨

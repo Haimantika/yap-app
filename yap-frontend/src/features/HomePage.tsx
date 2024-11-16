@@ -33,8 +33,7 @@ export default function HomePage() {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="w-full max-w-md">
-        <div className="grid w-full gap-4">
+        <div style={{gap: "1.4rem"}} className="flex flex-col">
           <Textarea
             onChange={handleInputChange}
             placeholder="Type your millennial/boomer lingo here."
@@ -49,7 +48,6 @@ export default function HomePage() {
           <ShareableTextCard yapper_text={trueYapperText} />
           </div>
         </div>
-      </div>
     </div>
   );
 }
