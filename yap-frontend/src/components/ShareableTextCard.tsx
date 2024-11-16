@@ -4,21 +4,30 @@ import * as React from "react"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Download, Twitter, Facebook, Linkedin } from 'lucide-react'
+import html2canvas from 'html2canvas'
 
 export default function ShareableTextCard({yapper_text}: {yapper_text:string}) {
+  const cardRef = React.useRef(null);
   const content = {
     title: "Happy yapping! Slay 💅",
     text: yapper_text,
   }
 
-  const downloadContent = () => {
-    const element = document.createElement("a");
-    const file = new Blob([content.text], {type: 'text/plain'});
-    element.href = URL.createObjectURL(file);
-    element.download = "inspiring-quote.txt";
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+  const downloadContent = async () => {
+    if (cardRef.current) {
+      try {
+        const canvas = await html2canvas(cardRef.current);
+        const imageUrl = canvas.toDataURL('image/png');
+        const element = document.createElement("a");
+        element.href = imageUrl;
+        element.download = "yapper.png";
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+      } catch (err) {
+        console.error('Error capturing card:', err);
+      }
+    }
   }
 
   const shareOnTwitter = () => {
@@ -34,7 +43,7 @@ export default function ShareableTextCard({yapper_text}: {yapper_text:string}) {
   }
 
   return (
-    <Card className="w-[350px]">
+    <Card ref={cardRef} className="w-[350px]">
       <CardHeader>
         <CardTitle className="text-center">{content.title}</CardTitle>
       </CardHeader>
