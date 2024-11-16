@@ -4,11 +4,10 @@ export const generateYap = async (text: string): Promise<string> => {
   try {
     const response = await axios.post(
       `https://yap-app-hsit.onrender.com/generate_yap`,
-      {},
       {
-        params: { text_str: encodeURIComponent(text) },
-        headers: { 'Content-Type': 'application/json' },
-      }
+        text_str: text
+      },
+
     );
     return response.data.message;
   } catch (error) {
