@@ -1,15 +1,27 @@
 from fastapi import FastAPI
 from groq import Groq
 import json
-app = FastAPI()
-
+from fastapi.middleware.cors import CORSMiddleware
 import os
 
+app = FastAPI()
+
+
+
+origins = ["*"]
 
 api_key = os.environ["GROQ_API_KEY"]
 
 client = Groq(api_key=api_key)
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.post("/generate_yap")
 async def generateYap(text_str: str):
     completion = client.chat.completions.create(
